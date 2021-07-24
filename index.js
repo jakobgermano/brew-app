@@ -20,8 +20,7 @@ function grabBreweries() {
                        <a href="#" data-id="${brew.id}"> ${brew.name}</a>
                        <button data-likes="0" id="${brew.id}" class="buttons">fav</button>
                     </li>    
-                `
-            
+                ` 
             })
         linkClicks()
         })
@@ -30,11 +29,23 @@ function grabBreweries() {
 
 function linkClicks() {
 const favButtons = document.querySelectorAll('button.buttons')
+favButtons.forEach(brew => {
+    brew.addEventListener('click', favBrew)
+})
+
 const brewies = document.querySelectorAll('li a')
         brewies.forEach(brew => {
         brew.addEventListener('click', showBrewery)
     })
 
+}
+
+function favBrew(e){
+    //console.log(e.target.parentElement)
+    const li = e.target.parentElement
+    const button = e.target
+    button.dataset.likes ++ 
+    console.log(button.dataset.likes)
 }
 
 async function showBrewery(e) {
