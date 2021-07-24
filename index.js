@@ -40,6 +40,12 @@ async function showBrewery(e) {
     brewList.innerHTML = ""
     fetch(`https://api.openbrewerydb.org/breweries/${e.target.dataset.id}`)
     .then(res => res.json())
-    .then(brew => console.log(brew))
+    .then(brew => {
+        info.innerHTML += `
+            <h1>${brew.name}</h1>
+            <h3>Location:</h3>
+            <p>${brew.state}</p>
+        `
+    })
 
 }
