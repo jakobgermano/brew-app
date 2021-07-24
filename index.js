@@ -18,6 +18,7 @@ function grabBreweries() {
                 brewList.innerHTML += `
                     <li>
                        <a href="#" data-id="${brew.id}"> ${brew.name}</a>
+                       <button data-likes="0" id="${brew.id}" class="buttons">fav</button>
                     </li>    
                 `
             
@@ -28,6 +29,7 @@ function grabBreweries() {
 }
 
 function linkClicks() {
+const favButtons = document.querySelectorAll('button.buttons')
 const brewies = document.querySelectorAll('li a')
         brewies.forEach(brew => {
         brew.addEventListener('click', showBrewery)
