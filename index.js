@@ -9,6 +9,8 @@ function grabBreweries() {
     let main = document.getElementById('main ul') //putting those elements from the html into variables to use later in the function
         let brewList = document.getElementById('brew-list')
         let info = document.getElementById('info')
+        info.innerHTML = ""
+        brewList.innerHTML = ""
     fetch(`https://api.openbrewerydb.org/breweries`)
         .then(res => res.json())
         .then(brewies => { 
