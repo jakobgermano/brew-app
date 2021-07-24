@@ -15,7 +15,7 @@ function grabBreweries() {
             brewies.map(brew => {
                 brewList.innerHTML += `
                     <li>
-                        ${brew.name}
+                       <a href="#" data-id="${brew.id}"> ${brew.name}</a>
                     </li>    
                 `
             
