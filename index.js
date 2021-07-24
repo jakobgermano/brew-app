@@ -1,7 +1,7 @@
 const MAIN_URL = `https://api.openbrewerydb.org`
 
  document.addEventListener('DOMContentLoaded', () =>{
-    //document.getElementById('brews').addEventListener('click', grabBreweries)
+    document.getElementById('brews').addEventListener('click', grabBreweries)
     grabBreweries()
 })
 
@@ -20,7 +20,26 @@ function grabBreweries() {
                 `
             
             })
-
+        linkClicks()
         })
     
+}
+
+function linkClicks() {
+const brewies = document.querySelectorAll('li a')
+        brewies.forEach(brew => {
+        brew.addEventListener('click', showBrewery)
+    })
+
+}
+
+async function showBrewery(e) {
+    console.log(e.target)
+    let info = document.getElementById('info')
+    let brewList = document.getElementById('brew-list')
+    brewList.innerHTML = ""
+    fetch(`https://api.openbrewerydb.org/breweries/${e.target.dataset.id}`)
+    .then(res => res.json())
+    .then(brew => console.log(brew))
+
 }
