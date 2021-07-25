@@ -44,8 +44,14 @@ function favBrew(e){
     //console.log(e.target.parentElement)
     const li = e.target.parentElement
     const button = e.target
+    const likes = li.querySelector('p')
     button.dataset.likes ++ 
-    console.log(button.dataset.likes)
+    if (likes === null ) {
+        li.insertAdjacentHTML('beforeend', `<p id ='likes'> favs: ${button.dataset.likes}</p>`)
+    }else {
+        likes.innerText = `likes: ${button.dataset.likes}`
+    }
+    
 }
 
 async function showBrewery(e) {
